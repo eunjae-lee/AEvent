@@ -174,6 +174,9 @@ Subscribers don't have to register/unregister sticky events. It just requests to
   }
 ```
 
+# License
+[MIT](http://opensource.org/licenses/mit-license.html)
+
 # Release History
 
 ## 1.0.0 (2014/2/18) : First release.

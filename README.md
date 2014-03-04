@@ -61,7 +61,7 @@ The following is a simple comparison.
   
   class MyInnerView extends View {
     @AEvent("SET TEXT")
-    public void setText(String text) {
+    void setText(String text) {
       textView.setText(text);
     }
   }
@@ -142,7 +142,7 @@ AEvent also provides sticky events so that the subscribers can receive events al
   class UserInfoViewActivity extends Activity {
     
     @ASticky("Update User Info")
-    public void updateUserInfo(UserInfo userInfo) {
+    void updateUserInfo(UserInfo userInfo) {
       // update stuff..
     }
   }

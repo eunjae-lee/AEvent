@@ -179,7 +179,13 @@ Subscribers don't have to register/unregister sticky events. It just requests to
 
 # Release History
 
-## 1.0.0 (2014/2/18) : First release.
+## 1.0.1 (2014/3/4)
+
+* Methods don't have to be public now. (now using "method.setAccessible(true)")
+
+## 1.0.0 (2014/2/18)
+
+* First release.
 
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/eunjae-lee/aevent/trend.png)](https://bitdeli.com/free "Bitdeli Badge")

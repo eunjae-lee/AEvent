@@ -4,7 +4,7 @@
     <artifactId>AEvent</artifactId>
     <packaging>jar</packaging>
     <name>Maven core</name>
-    <version>1.0.2-SNAPSHOT</version>
+    <version>1.0.2</version>
     <description>An android event managing library based on annotations.</description>
     <url>https://github.com/eunjae-lee/AEvent</url>
     <dependencies>

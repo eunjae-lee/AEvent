@@ -94,10 +94,14 @@ public class AEventManager {
 				} else if (eventData != null && parameterTypes.length == eventData.length) {
 					method.invoke(subscriber, eventData);
 				} else {
-					Log.e("AEVENT", String.format("Method %s requires %d parameters, but you posted %s parameter! So method hasn't been excuted."
+					throw new IllegalArgumentException(String.format("Method %s requires %d parameters, but you posted %s parameter! So method hasn't been excuted."
 							, method.toString()
 							, parameterTypes.length
 							, eventData == null ? 0 : eventData.length));
+//					Log.e("AEVENT", String.format("Method %s requires %d parameters, but you posted %s parameter! So method hasn't been excuted."
+//							, method.toString()
+//							, parameterTypes.length
+//							, eventData == null ? 0 : eventData.length));
 				}
 			} catch (IllegalAccessException e) {
 				e.printStackTrace();
@@ -124,6 +128,7 @@ public class AEventManager {
 		for (Method method : methods) {
 			AEvent annotation = method.getAnnotation(AEvent.class);
 			if (annotation != null) {
+				method.setAccessible(true);
 				result.add(method);
 			}
 		}

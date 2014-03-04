@@ -72,6 +72,7 @@ public class AStickyEventManager {
 		for (Method method : methods) {
 			ASticky annotation = method.getAnnotation(ASticky.class);
 			if (annotation != null) {
+				method.setAccessible(true);
 				result.add(method);
 			}
 		}
@@ -137,13 +138,12 @@ public class AStickyEventManager {
 				} else if (eventData != null && parameterTypes.length == eventData.length) {
 					method.invoke(subscriber, eventData);
 				} else {
-					Log.e("AEVENT", String.format("Method %s requires %d parameters, but you posted %s parameter! So method hasn't been excuted."
+					throw new IllegalArgumentException(String.format("Method %s requires %d parameters, but you posted %s parameter! So method hasn't been excuted."
 							, method.toString()
 							, parameterTypes.length
 							, eventData == null ? 0 : eventData.length));
 				}
 			} catch (IllegalAccessException e) {
-				Log.e("AEVENT", "Check if the method is public");
 				e.printStackTrace();
 			} catch (InvocationTargetException e) {
 				e.printStackTrace();

@@ -11,14 +11,14 @@ AEvent is an Android library to handle events using Publish/Subscribe pattern. W
   <dependency>
     <groupId>net.eunjae.android.aevent</groupId>
     <artifactId>AEvent</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
   </dependency>
 ```
 
 ## Gradle
 
 ```
-  compile 'net.eunjae.android.aevent:AEvent:1.0.2'
+  compile 'net.eunjae.android.aevent:AEvent:1.0.3'
 ```
 
 # Usage
@@ -178,6 +178,10 @@ Subscribers don't have to register/unregister sticky events. It just requests to
 [MIT](http://opensource.org/licenses/mit-license.html)
 
 # Release History
+
+## 1.0.3 (2014/3/6)
+
+* Deploying again due to branch merge issue.
 
 ## 1.0.2 (2014/3/4)
 

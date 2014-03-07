@@ -15,6 +15,11 @@ public class StickyEvent extends Event {
 		AStickyEventManager.getInstance().post(this);
 	}
 
+	@Override
+	public void postOnUiThread() {
+		AStickyEventManager.getInstance().postOnUiThread(this);
+	}
+
 	public Event allowDuplicates() {
 		this.eventAllowDuplicates = true;
 		return this;

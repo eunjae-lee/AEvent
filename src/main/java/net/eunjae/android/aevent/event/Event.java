@@ -31,6 +31,10 @@ public class Event {
 		AEventManager.getInstance().post(this);
 	}
 
+	public void postOnUiThread() {
+		AEventManager.getInstance().postOnUiThread(this);
+	}
+
 	public void postDelayed(long delay) {
 		new Handler().postDelayed(new Runnable() {
 			@Override

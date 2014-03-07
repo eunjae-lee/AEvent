@@ -1,5 +1,6 @@
 package net.eunjae.android.aevent.manager;
 
+import android.os.Handler;
 import android.util.Log;
 import net.eunjae.android.aevent.annotation.AEvent;
 import net.eunjae.android.aevent.event.Event;
@@ -13,6 +14,7 @@ public class AEventManager {
 	private static volatile AEventManager instance = null;
 	private ArrayList<WeakReference<Object>> subscribers;
 	private HashMap<Class<?>, ArrayList<Method>> annotatedMethodsByClass = new HashMap<Class<?>, ArrayList<Method>>();
+	private Handler handler = new Handler();
 
 	public static AEventManager getInstance() {
 		if (instance == null) {
@@ -63,6 +65,15 @@ public class AEventManager {
 				fireEvents(subscriber, event, methods);
 			}
 		}
+	}
+
+	public void postOnUiThread(final Event event) {
+		handler.post(new Runnable() {
+			@Override
+			public void run() {
+				post(event);
+			}
+		});
 	}
 
 	private void fireEvents(Object subscriber, Event event, ArrayList<Method> methods) {

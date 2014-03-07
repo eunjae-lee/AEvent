@@ -1,5 +1,6 @@
 package net.eunjae.android.aevent.manager;
 
+import android.os.Handler;
 import android.util.Log;
 import net.eunjae.android.aevent.annotation.ASticky;
 import net.eunjae.android.aevent.util.CompareUtil;
@@ -18,6 +19,7 @@ public class AStickyEventManager {
 
 	private EventMap eventMap = new EventMap();
 	private HashMap<Class<?>, ArrayList<Method>> annotatedMethodsByClass = new HashMap<Class<?>, ArrayList<Method>>();
+	private Handler handler = new Handler();
 
 	public static AStickyEventManager getInstance() {
 		if (instance == null) {
@@ -44,6 +46,15 @@ public class AStickyEventManager {
 		if (willAddEvent) {
 			eventMap.add(event._getEventName(), event);
 		}
+	}
+
+	public void postOnUiThread(final StickyEvent stickyEvent) {
+		handler.post(new Runnable() {
+			@Override
+			public void run() {
+				post(stickyEvent);
+			}
+		});
 	}
 
 	public void cancelAll(String eventName) {

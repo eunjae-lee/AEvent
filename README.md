@@ -11,14 +11,14 @@ AEvent is an Android library to handle events using Publish/Subscribe pattern. W
   <dependency>
     <groupId>net.eunjae.android.aevent</groupId>
     <artifactId>AEvent</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
   </dependency>
 ```
 
 ## Gradle
 
 ```
-  compile 'net.eunjae.android.aevent:AEvent:1.0.3'
+  compile 'net.eunjae.android.aevent:AEvent:1.0.4'
 ```
 
 # Usage
@@ -97,6 +97,12 @@ And posting event can have delay.
 
 ```java
   new Event("event name").data("hello world").postDelayed(300);   // post event after 300ms delay.
+```
+
+When posting an event in background thread, you can specify it to run on Ui Thread.
+
+```java
+  new Event("event name").postOnUiThread();
 ```
 
 Any event gets removed from queue when it gets consumed by a subscriber. So if you want the same events to be consumed by several subscribers, you should create several event objects targeting its each subscriber class.
@@ -179,15 +185,19 @@ Subscribers don't have to register/unregister sticky events. It just requests to
 
 # Release History
 
-## 1.0.3 (2014/3/6)
+## 1.0.4 (2014/03/12)
+
+* Add postOnUiThread() method
+
+## 1.0.3 (2014/03/06)
 
 * Deploying again due to branch merge issue.
 
-## 1.0.2 (2014/3/4)
+## 1.0.2 (2014/03/04)
 
 * Methods don't have to be public now. (now using "method.setAccessible(true)")
 
-## 1.0.0 (2014/2/18)
+## 1.0.0 (2014/02/18)
 
 * First release.
 
